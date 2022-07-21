@@ -100,18 +100,45 @@ public class BrandList extends ArrayList<Brand> {
 
     public void addBrand() {
         System.out.println("Enter brandID:");
-        String brandID=inputStr();
-         while(searchID(brandID)==-1){
-             System.out.println("Brand ID cannot be duplicated");
-             
-         }
+        String brandID = inputStr();
+        while (searchID(brandID) == -1) {
+            System.out.println("Brand ID cannot be duplicated");
+            System.out.println("Enter brandID again: ");
+            brandID = "";
+            brandID = inputStr();
+        }
+        System.out.println("Enter brandName: ");
+        String brandName = inputStr();
+        System.out.println("Enter soundBrand: ");
+        String soundBrand = inputStr();
+        System.out.println("Enter brand's price:");
+        double price = inputDouble();
+        Brand brand = new Brand(brandID, brandName, soundBrand, price);
+        bList.add(brand);
     }
 
     public void updateBrand() {
-
+        System.out.println("Enter brandID:");
+        String brandID = inputStr();
+        if (searchID(brandID) == -1) {
+            System.out.println("BrandID does not exist.");
+        } else {
+            System.out.println("Enter brandName: ");
+            String brandName = inputStr();
+            System.out.println("Enter soundBrand: ");
+            String soundBrand = inputStr();
+            System.out.println("Enter brand's price:");
+            double price = inputDouble();
+            Brand brand = new Brand(brandID, brandName, soundBrand, price);
+            bList.set(searchID(brandID),brand);
+        }
     }
 
     public void listBrands() {
-
+        System.out.println("Brand list: ");
+        for(Brand brand: bList){
+            System.out.println(brand);
+        }
     }
 }
+
