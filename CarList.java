@@ -87,22 +87,7 @@ public class CarList extends ArrayList<Car> {
     }
 
     public boolean saveToFile(String filename) {
-        try {
-            File f = new File(filename);
-            FileWriter fw = new FileWriter(f);
-            PrintWriter pw = new PrintWriter(fw);
-            for (Car car : cList) {
-                pw.println(car.getCarID() + ", " + car.getBrand().getBrandID() + ", " + car.getColor() + ", " + car.getFrameID() + ", " + car.getEngineID() + "\n");
-            }
-            pw.close();
-            fw.close();
-
-        } catch (Exception e) {
-            System.out.println("Cannot complete saving");
-            System.out.println(e.getMessage());
-        }
-        System.out.println("Saving completed");
-        return true;
+        
     }
 
     public int searchID(String carID) {
@@ -190,58 +175,11 @@ public class CarList extends ArrayList<Car> {
     }
 
     public boolean removeCar() {
-        System.out.println("Enter a removed ID");
-        String removedID = BrandList.inputStr();
-        int pos = searchID(removedID);
-        if (pos == -1) {
-            System.err.println("Not found!");
-            return false;
-        } else {
-            cList.remove(pos);
-            System.out.println("Remove completed");
-        }
-        return true;
+        
     }
 
     public boolean updateCar() {
-        System.out.println("Enter a Car ID");
-        String carID = BrandList.inputStr();
-
-        int pos = searchID(carID);
-        if (pos == -1) {
-            System.out.println("Not found!");
-            return false;
-        } else {
-            Menu<Brand> menu = new Menu<Brand>();
-            Brand brand = menu.ref_getChoice(brandList);
-
-            System.out.println("Enter a color: ");
-            String color = BrandList.inputStr();
-            String frameID;
-            String engineID;
-
-            do {
-                frameID = inputFrame();
-                if (searchFrame(frameID) != -1 && !this.get(pos).getFrameID().equals(frameID)) {
-                    System.err.println("FrameID cannot be duplicated!");
-                } else {
-                    break;
-                }
-            } while (true);
-
-            do {
-                engineID = inputEngine();
-                if (searchEngine(engineID) != -1 && !this.get(pos).getEngineID().equals(engineID)) {
-                    System.out.println("EngineID cannot be duplicated!");
-                } else {
-                    break;
-                }
-            } while (true);
-
-            Car car = new Car(carID, brand, color, frameID, engineID);
-            cList.set(pos, car);
-        }
-        return true;
+        
     }
 
     public void listCars() {
