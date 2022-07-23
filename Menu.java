@@ -19,7 +19,7 @@ public class Menu<E> {
 
                 return input;
             } catch (Exception e) {
-                System.out.println("Invalid value");
+                System.out.println("Invalid input.");
                 System.out.println(e.getMessage());
             }
         }
@@ -31,7 +31,7 @@ public class Menu<E> {
         for (int i = 0; i < N; i++) {
             System.out.println( (i+1)+". "+options.get(i));
         }
-        System.out.println("Please choos an option 1..N");
+        System.out.println("Please choos an option 1..."+N);
         reponse = inputInt(1, N);
         return reponse;
     }
