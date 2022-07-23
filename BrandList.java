@@ -57,7 +57,7 @@ public class BrandList extends ArrayList<Brand> {
                 return false;
             }
             if (f.length() == 0) {
-                System.err.println("Warning: " + filename + " has no content.");
+                System.err.println("Error: " + filename + " has no content.");
                 return false;
             }
             FileReader fr = new FileReader(f);
