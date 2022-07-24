@@ -122,7 +122,13 @@ public class BrandList extends ArrayList<Brand> {
     }
 
     public void listBrands() {
-       
+       if (this.isEmpty()) {
+            System.out.println("There is no Brand");
+        }
+        
+        for (Brand brand : this) {
+            System.out.println(brand);
+        }
         }
     }
 }
