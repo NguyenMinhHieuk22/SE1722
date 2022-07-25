@@ -8,10 +8,10 @@ public class CarManager {
 
     public static void main(String[] args) {
         BrandList brandList = new BrandList();
-        brandList.loadFromFile("C:\\Users\\hiung\\OneDrive\\Máy tính\\Documents\\NetBeansProjects\\CarPrj\\src\\brands.txt");
+        brandList.loadFromFile("src/brands.txt");
 
         CarList carList = new CarList(brandList);
-        carList.loadFromFile("C:\\Users\\hiung\\OneDrive\\Máy tính\\Documents\\NetBeansProjects\\CarPrj\\src\\cars.txt");
+        carList.loadFromFile("src/cars.txt");
 
         int choice;
         Menu<String> menu = new Menu<String>();
@@ -30,6 +30,7 @@ public class CarManager {
         ops.add("Save cars to file, named cars.txt.");
 
         do {
+            System.out.println("=====================================================");
             choice = menu.int_getChoice(ops);
             switch (choice) {
                 case 1:
@@ -49,10 +50,9 @@ public class CarManager {
                     break;
                 case 4:
                     brandList.updateBrand();
-                    carList.updateCar();
                     break;
                 case 5:
-                    brandList.saveToFile("C:\\Users\\hiung\\OneDrive\\Máy tính\\Documents\\NetBeansProjects\\CarPrj\\src\\brands.txt");
+                    brandList.saveToFile("src/brands.txt");
                     break;
                 case 6:
                     carList.listCars();
@@ -70,7 +70,7 @@ public class CarManager {
                     carList.updateCar();
                     break;
                 case 11:
-                    carList.saveToFile("C:\\Users\\hiung\\OneDrive\\Máy tính\\Documents\\NetBeansProjects\\CarPrj\\src\\cars.txt");
+                    carList.saveToFile("src/cars.txt");
                     break;
             }
         } while (choice > 0 && choice <= ops.size());
