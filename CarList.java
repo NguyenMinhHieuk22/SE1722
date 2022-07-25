@@ -58,7 +58,11 @@ public class CarList extends ArrayList<Car> {
         try {
             File f = new File(filename);
             if (!f.exists()) {
-                System.out.println("File does not exist.");
+                System.err.println("File does not exist.");
+                return false;
+            }
+            if (f.length() == 0) {
+                System.err.println("Error: " + filename + " has no content to read.");
                 return false;
             }
             FileReader fr = new FileReader(f);
@@ -79,8 +83,8 @@ public class CarList extends ArrayList<Car> {
 
             }
         } catch (Exception e) {
-            System.out.println("Cannot complete loading.");
-            System.out.println(e.getMessage());
+            System.err.println("Cannot complete loading.");
+            System.err.println(e.getMessage());
         }
         System.out.println("Loading completed.");
         return true;
@@ -93,7 +97,7 @@ public class CarList extends ArrayList<Car> {
     public int searchID(String carID) {
         int N = cList.size();
         for (int i = 0; i < N; i++) {
-            if (this.get(i).getCarID() == carID) {
+            if (this.get(i).getCarID().equals(carID)) {
                 return i;
             }
         }
@@ -103,7 +107,7 @@ public class CarList extends ArrayList<Car> {
     public int searchFrame(String fID) {
         int N = cList.size();
         for (int i = 0; i < N; i++) {
-            if (this.get(i).getFrameID() == fID) {
+            if (this.get(i).getFrameID(.equals(fID)) {
                 return i;
             }
         }
@@ -113,7 +117,7 @@ public class CarList extends ArrayList<Car> {
     public int searchEngine(String eID) {
         int N = cList.size();
         for (int i = 0; i < N; i++) {
-            if (cList.get(i).getEngineID() == eID) {
+            if (cList.get(i).getEngineID().equals(eID)) {
                 return i;
             }
         }
@@ -127,12 +131,12 @@ public class CarList extends ArrayList<Car> {
         carID = BrandList.inputStr();
 
         if (searchID(carID) != -1) {
-            System.out.println("Car ID cannot be duplicated!");
+            System.err.println("Car ID cannot be duplicated!");
             return;
         }
 
         Menu<Brand> menu = new Menu<Brand>();
-        Brand brand = menu.ref_getChoice(brandList);
+        Brand brand =(Brand) menu.ref_getChoice(brandList);
 
         System.out.println("Enter a color: ");
         String color = BrandList.inputStr();
@@ -170,7 +174,7 @@ public class CarList extends ArrayList<Car> {
             }
         }
         if (count == 0) {
-            System.out.println("No car is detected!");
+            System.err.println("No car is detected!");
         }
     }
 
