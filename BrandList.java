@@ -22,7 +22,7 @@ public class BrandList extends ArrayList<Brand> {
                 break;
             } else {
                 System.err.println("Wrong string. You've entered an empty string. ");
-                System.out.print("Please enter again: ");
+                System.err.print("Please enter again: ");
                 input = sc.nextLine();
             }
         }
@@ -77,8 +77,8 @@ public class BrandList extends ArrayList<Brand> {
             fr.close();
 
         } catch (Exception e) {
-            System.out.println("Cannot complete loading");
-            System.out.println(e.getMessage());
+            System.err.println("Cannot complete loading");
+            System.err.println(e.getMessage());
         }
         System.out.println("Loading completed");
         return true;
@@ -96,8 +96,8 @@ public class BrandList extends ArrayList<Brand> {
             fw.close();
 
         } catch (Exception e) {
-            System.out.println("Cannot complete saving");
-            System.out.println(e.getMessage());
+            System.err.println("Cannot complete saving");
+            System.err.println(e.getMessage());
         }
         System.out.println("Saving completed");
         return true;
@@ -123,7 +123,7 @@ public class BrandList extends ArrayList<Brand> {
 
     public void listBrands() {
        if (this.isEmpty()) {
-            System.out.println("There is no Brand");
+            System.err.println("There is no Brand");
         }
         
         for (Brand brand : this) {
